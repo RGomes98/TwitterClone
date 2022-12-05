@@ -1,0 +1,24 @@
+@use '../../variables' as var;
+
+.container {
+  padding: 1rem;
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.link {
+  color: var.$grey-fnt;
+  text-decoration: none;
+  font-size: var.$xsm-text;
+}
+
+.link:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}

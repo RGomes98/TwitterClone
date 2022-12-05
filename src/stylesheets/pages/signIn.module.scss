@@ -1,0 +1,139 @@
+@use '../variables' as var;
+
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper {
+  width: 100%;
+  height: 95vh;
+  display: flex;
+}
+
+.logoSection,
+.signUpSection {
+  position: relative;
+}
+
+.logoSection {
+  width: 55%;
+  display: flex;
+  align-items: center;
+  background-size: cover;
+  justify-content: center;
+  background-position: center;
+  background-color: var.$drk-blue;
+  background-image: url('../../../public/images/signInBackground.png');
+}
+
+.logoBig {
+  width: 41%;
+  height: auto;
+  padding: 2rem;
+  min-width: 25rem;
+  filter: var.$white-filter;
+}
+
+.signUpSection {
+  display: flex;
+  min-width: 50rem;
+  padding: 0 2.5rem;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.logoSmall {
+  width: 2.65rem;
+  height: 2.65rem;
+  filter: var.$greyish-white-filter;
+}
+
+.mainHeading,
+.minorHeading {
+  font-weight: 800;
+}
+
+.mainHeading,
+.minorHeading,
+.text {
+  color: var.$greyish-white;
+}
+
+.mainHeading {
+  margin: 3rem 0;
+  font-size: var.$bg-heading;
+}
+
+.minorHeading {
+  font-size: var.$md-heading;
+}
+
+.text {
+  font-weight: 700;
+  margin-bottom: 1rem;
+  font-size: var.$md-text;
+}
+
+.button {
+  width: 18.8rem;
+  cursor: pointer;
+  font-weight: 500;
+  border-radius: 2rem;
+  padding: 0.6rem 3rem;
+  color: var.$lgt-blue;
+  font-size: var.$md-text;
+  background-color: transparent;
+  transition: background-color 0.2s;
+  border: 1px solid var.$grey-border;
+}
+
+.button:hover {
+  background-color: var.$lgt-grey-hover-transparent;
+}
+
+@media (max-width: 615px) {
+  .mainHeading {
+    font-size: var.$bg-heading-media;
+  }
+
+  .minorHeading {
+    font-size: var.$md-heading-media;
+  }
+}
+
+@media (max-width: 1000px) {
+  .wrapper {
+    height: unset;
+    flex-direction: column;
+  }
+
+  .logoSection {
+    z-index: 1;
+    width: 100%;
+    height: 28rem;
+    margin-top: 3rem;
+  }
+
+  .logoBig {
+    max-width: 25rem;
+  }
+
+  .signUpSection {
+    order: -1;
+    min-width: unset;
+    padding-top: 3rem;
+    text-align: center;
+    align-items: center;
+  }
+}
+
+@media (max-width: 1200px) {
+  .logoBig {
+    width: 100%;
+    min-width: unset;
+  }
+}

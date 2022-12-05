@@ -1,0 +1,14 @@
+@use './variables' as var;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var.$open-sans, Verdana, 'Lucida Sans';
+}
+
+body {
+  background-color: var.$black;
+}

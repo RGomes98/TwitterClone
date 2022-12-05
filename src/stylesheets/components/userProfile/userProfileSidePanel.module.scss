@@ -1,0 +1,131 @@
+@use '../../variables' as var;
+
+.container {
+  top: 0;
+  display: flex;
+  height: 100vh;
+  position: sticky;
+  flex-direction: column;
+}
+
+.navMenu {
+  height: 100%;
+  gap: 0.6rem;
+  display: flex;
+  max-width: 15.6rem;
+  padding-top: 0.2rem;
+  flex-direction: column;
+}
+
+.navItem:not(.navItem:nth-child(10)) {
+  display: flex;
+  white-space: nowrap;
+  margin-right: 3.8rem;
+}
+
+.navItem:first-child .button {
+  padding: 1rem;
+  border-radius: 50%;
+  justify-content: center;
+}
+
+.navItem:first-child .button:hover {
+  background-color: var.$blue-hover-transparent;
+}
+
+.button {
+  gap: 1rem;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  border-radius: 2rem;
+  padding: 0.7rem 1rem;
+  background-color: var.$black;
+  transition: background-color 0.2s, border-radius 0.2s;
+}
+
+.button:hover {
+  background-color: var.$lgt-grey-hover-transparent;
+}
+
+.logo {
+  width: 1.75rem;
+  height: 1.75rem;
+  filter: var.$white-filter;
+}
+
+.text {
+  gap: 1rem;
+  display: flex;
+  font-weight: 300;
+  color: var.$white;
+  font-size: var.$sm-heading;
+}
+
+.navItem:nth-child(10) {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.navItem:nth-child(10) .button {
+  width: 90%;
+  padding: 0.9rem 0;
+  justify-content: center;
+  background-color: var.$blue;
+}
+
+.navItem:nth-child(10) .button:hover {
+  background-color: var.$drk-blue;
+}
+
+.navItem:nth-child(10) .button .logo {
+  display: none;
+}
+
+.navItem:nth-child(10) .button .text {
+  font-weight: 600;
+  font-size: var.$md-text;
+}
+
+@media (max-width: '1300px') {
+  .navMenu {
+    gap: unset;
+    align-items: center;
+  }
+
+  .navItem:not(.navItem:nth-child(10)) {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .button {
+    padding: 1rem;
+    border-radius: 50%;
+  }
+
+  .text {
+    display: none;
+  }
+
+  .navItem:nth-child(10) {
+    width: auto;
+  }
+
+  .navItem:nth-child(10) .button {
+    width: auto;
+    padding: 0.9rem;
+  }
+
+  .navItem:nth-child(10) .button .logo {
+    width: 1.38rem;
+    display: unset;
+    height: 1.38rem;
+  }
+}
+
+@media (max-width: '660px') {
+  .navItem:not(.navItem:nth-child(10)) {
+    margin-left: unset;
+    margin-right: unset;
+  }
+}

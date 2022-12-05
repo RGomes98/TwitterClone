@@ -1,0 +1,63 @@
+@use '../../variables' as var;
+
+.container {
+  gap: 0.8rem;
+  display: flex;
+  max-width: 20rem;
+  margin: 2rem 0 4rem;
+  flex-direction: column;
+}
+
+.button {
+  outline: none;
+  height: 2.65rem;
+  display: flex;
+  width: 18.8rem;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 2rem;
+  align-items: center;
+  justify-content: center;
+  font-size: var.$sm-text;
+  color: var.$drk-grey-fnt;
+  font-family: var.$open-sans;
+  background-color: var.$white;
+  border: 1px solid var.$grey-border;
+  transition: 0.2s background-color, border-color;
+}
+
+.button:active {
+  border-color: var.$drk-grey-active;
+  background-color: var.$lgt-grey-active;
+}
+
+.logo {
+  width: 1.4rem;
+  height: 1.4rem;
+  margin-right: 0.6rem;
+}
+
+.text {
+  line-height: 1.3;
+  color: var.$grey-fnt;
+  font-size: var.$tiny-text;
+}
+
+.link {
+  color: var.$lgt-blue;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: '1000px') {
+  .container {
+    align-items: center;
+  }
+
+  .text {
+    text-align: center;
+  }
+}

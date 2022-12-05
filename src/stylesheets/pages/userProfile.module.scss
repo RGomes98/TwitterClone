@@ -1,0 +1,58 @@
+@use '../variables' as var;
+
+.container {
+  width: 100%;
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+  justify-content: center;
+}
+
+.wrapper {
+  gap: 2rem;
+  width: auto;
+  display: flex;
+}
+
+.feedWrapper {
+  width: 100%;
+  max-width: 37.5rem;
+  min-width: 37.5rem;
+  min-height: 500vh;
+  position: relative;
+  border-left: 1px solid var.$drk-grey-fnt;
+  border-right: 1px solid var.$drk-grey-fnt;
+  border-bottom: 1px solid var.$drk-grey-fnt;
+}
+
+.sideWrapper {
+  width: 90%;
+  min-width: 21.9rem;
+  max-width: 21.9rem;
+  margin-right: 1rem;
+}
+
+@media (max-width: '1115px') {
+  .sideWrapper {
+    min-width: 18.1rem;
+    max-width: 18.1rem;
+  }
+}
+
+@media (max-width: '1050px') {
+  .feedWrapper {
+    min-width: unset;
+  }
+}
+
+@media (max-width: '1020px') {
+  .sideWrapper {
+    display: none;
+  }
+}
+
+@media (max-width: '376px') {
+  .container {
+    overflow-x: hidden;
+  }
+}

@@ -1,0 +1,111 @@
+@use '../../variables' as var;
+
+.container {
+  width: 100%;
+  display: flex;
+  margin-top: 1rem;
+  touch-action: none;
+  overflow-x: scroll;
+  position: absolute;
+  align-items: center;
+  scroll-behavior: smooth;
+}
+
+.container::-webkit-scrollbar {
+  display: none;
+}
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  position: absolute;
+  justify-content: space-between;
+}
+
+.wrapper .button {
+  z-index: 10;
+  border: none;
+  display: flex;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  background-color: var.$black;
+  transition: background-color 0.4s;
+}
+
+.wrapper .button:hover {
+  background-color: var.$drk-grey-hover;
+}
+
+.wrapper .button:active {
+  background-color: var.$drk-grey-active;
+}
+
+.wrapper :first-child {
+  left: 0.4rem;
+  position: sticky;
+}
+
+.wrapper :last-child {
+  right: 0.3rem;
+  position: sticky;
+}
+
+.logo {
+  width: 1.25rem;
+  height: 1.25rem;
+  filter: var.$white-filter;
+}
+
+.wrapper :last-child .logo {
+  transform: rotate(180deg);
+}
+
+.hiddenButton {
+  visibility: hidden;
+}
+
+.filterButton {
+  z-index: 1;
+  flex-grow: 1;
+  display: flex;
+  padding: 1rem;
+  cursor: pointer;
+  font-weight: 500;
+  position: relative;
+  white-space: nowrap;
+  color: var.$grey-fnt;
+  font-size: var.$md-text;
+  justify-content: center;
+  background-color: transparent;
+  transition: background-color 0.2s;
+}
+
+.container > .button:hover {
+  background-color: var.$lgt-grey-hover-transparent;
+}
+
+.bar {
+  bottom: 0;
+  height: 0.3rem;
+  position: absolute;
+  border-radius: 2rem;
+  width: 100%;
+  max-width: calc(100% - 3rem);
+  min-width: calc(100% - 2rem);
+  background-color: var.$lgt-blue;
+}
+
+.selectedFilter {
+  color: var.$white;
+}
+
+@media (max-width: '500px') {
+  .bar {
+    max-width: unset;
+    width: calc(100% - 1.7rem);
+  }
+}

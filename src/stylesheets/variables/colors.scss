@@ -1,0 +1,46 @@
+//Colors
+$black: hsl(0, 0%, 0%);
+$white: hsl(0, 0%, 100%);
+$blue: hsl(204, 88%, 45%);
+$drk-grey: hsl(214, 10%, 14%);
+$lgt-blue: hsl(204, 88%, 53%);
+$drk-blue: hsl(209, 100%, 42%);
+$greyish-white: hsl(204, 6%, 85%);
+$drk-bluish-black: hsl(220, 12%, 10%);
+
+//Transparent Colors
+$black-transparent: hsla(0, 0%, 0%, 0.3);
+$white-transparent: hsla(0, 0%, 100%, 0.2);
+$black-fnt-transparent: hsla(0, 0%, 20%, 0.8);
+$drk-grey-transparent: hsl(207, 10%, 17%, 0.8);
+$blue-hover-transparent: hsla(204, 88%, 53%, 0.1);
+$greyish-white-transparent: hsl(204, 6%, 85%, 0.8);
+$lgt-grey-hover-transparent: hsla(192, 20%, 95%, 0.1);
+$lgt-grey-active-transparent: hsla(192, 20%, 95%, 0.2);
+
+//Border Colors
+$grey-border: hsl(205, 15%, 38%);
+$lgt-grey-border: hsl(220, 9%, 87%);
+
+//Hover Colors
+$drk-grey-hover: hsl(207, 10%, 17%);
+
+//Active Colors
+$drk-grey-active: hsl(210, 4%, 22%);
+$lgt-grey-active: hsl(212, 52%, 95%);
+
+//Font Colors
+$grey-fnt: hsl(213, 4%, 46%);
+$drk-grey-fnt: hsl(210, 6%, 25%);
+
+//Filter Colors
+$drk-blue-filter: brightness(0) saturate(100%) invert(35%) sepia(94%) saturate(3502%)
+  hue-rotate(194deg) brightness(88%) contrast(101%);
+$greyish-white-filter: brightness(0) saturate(100%) invert(94%) sepia(7%) saturate(78%)
+  hue-rotate(161deg) brightness(93%) contrast(90%);
+$black-filter: brightness(0) saturate(100%) invert(0%) sepia(8%) saturate(0%) hue-rotate(281deg)
+  brightness(98%) contrast(102%);
+$grey-filter: brightness(0) saturate(100%) invert(49%) sepia(4%) saturate(496%) hue-rotate(173deg)
+  brightness(91%) contrast(86%);
+$white-filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(248deg)
+  brightness(106%) contrast(106%);

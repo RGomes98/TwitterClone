@@ -1,0 +1,180 @@
+@use '../../variables' as var;
+
+.container {
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  display: flex;
+  height: 3.25rem;
+  position: sticky;
+  align-items: center;
+  padding-top: 0.1rem;
+  background-color: var.$black;
+}
+
+.magnifierLogo {
+  z-index: 1;
+  width: 1.15rem;
+  height: 1.15rem;
+  position: absolute;
+  margin-left: 1.5rem;
+  filter: var.$grey-filter;
+}
+
+.magnifierLogoActive {
+  filter: var.$drk-blue-filter;
+}
+
+.cancelButton {
+  z-index: 5;
+  border: none;
+  display: flex;
+  right: 0.95rem;
+  width: 1.55rem;
+  height: 1.55rem;
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  background-color: var.$drk-blue;
+}
+
+.cancelLogo {
+  width: 1.2rem;
+  height: 1.2rem;
+  fill: var.$black-filter;
+}
+
+.input {
+  height: 85%;
+  width: 100%;
+  border: none;
+  outline: none;
+  padding-left: 4rem;
+  position: absolute;
+  border-radius: 1.6rem;
+  caret-color: var.$white;
+  font-size: var.$sm-text;
+  color: var.$greyish-white;
+  background-color: var.$drk-grey;
+}
+
+.inputActive {
+  background-color: var.$black;
+  border: 1px solid var.$drk-blue;
+}
+
+.wrapper,
+.emptyWrapper {
+  top: 3.1rem;
+  width: 100%;
+  z-index: -1;
+  display: flex;
+  overflow-y: auto;
+  position: absolute;
+  overflow-x: hidden;
+  border-radius: 0.5rem;
+  flex-direction: column;
+  background-color: var.$black;
+  max-height: calc(80vh - 3.3rem);
+  box-shadow: 0 0 0.95rem 0.3rem var.$white-transparent;
+}
+
+.loadingWrapper {
+  width: 100%;
+  height: 0.25rem;
+  position: absolute;
+}
+
+.bar {
+  width: 25%;
+  height: 100%;
+  position: absolute;
+  background-color: var.$lgt-blue;
+  animation: infiniteLoadingBar 1.2s ease-in infinite;
+}
+
+@keyframes infiniteLoadingBar {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(500%);
+  }
+}
+
+.wrapper .button {
+  gap: 1rem;
+  width: 100%;
+  border: none;
+  padding: 1rem;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  background-color: transparent;
+  transition: background-color 0.2s;
+}
+
+.wrapper .button:hover,
+.wrapper .text:hover {
+  background-color: var.$lgt-grey-hover-transparent;
+}
+
+.profilePicture {
+  border-radius: 50%;
+}
+
+.detailsWrapper {
+  width: 100%;
+  gap: 0.05rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.name {
+  gap: 0.2rem;
+  display: flex;
+  color: var.$white;
+  align-items: center;
+  font-size: var.$md-text;
+}
+
+.name .logo {
+  width: 1.15rem;
+  height: 1.15rem;
+  filter: var.$white-filter;
+}
+
+.message,
+.username,
+.emptyWrapper .text {
+  color: var.$grey-fnt;
+  font-size: var.$md-text;
+}
+
+.message {
+  width: 70%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.text {
+  color: var.$white;
+  font-size: var.$sm-text;
+}
+
+.wrapper .text {
+  cursor: pointer;
+  padding: 1.2rem 1rem;
+  transition: background-color 0.2s;
+}
+
+.emptyWrapper .text {
+  text-align: center;
+  font-size: var.$sm-text;
+  padding: 1.4rem 1rem 3rem;
+}
