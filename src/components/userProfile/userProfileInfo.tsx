@@ -1,4 +1,3 @@
-import profileBackground from '../../../public/images/profileBackground.png';
 import verifiedSVG from '../../../public/images/verified.svg';
 import locationSVG from '../../../public/images/location.svg';
 import calendarSVG from '../../../public/images/calendar.svg';
@@ -7,7 +6,7 @@ import Image from 'next/image';
 
 import userProfileStyles from '../../stylesheets/components/userProfile/userProfileInfo.module.scss';
 
-export type userProfileInfoType = {
+export type UserProfileData = {
   backgroundImage: string;
   isVerified: boolean;
   residesAt: string;
@@ -19,7 +18,7 @@ export type userProfileInfoType = {
   name: string;
 };
 
-export const UserProfileInfo: React.FC<userProfileInfoType> = ({
+export const UserProfileInfo: React.FC<UserProfileData> = ({
   backgroundImage,
   isVerified,
   residesAt,

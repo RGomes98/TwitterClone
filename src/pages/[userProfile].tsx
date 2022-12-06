@@ -1,8 +1,9 @@
 import type { GetServerSidePropsContext, InferGetServerSidePropsType, NextPage } from 'next';
+import { UserProfileStickyPanel } from '../components/userProfile/userProfileStickyPanel';
 import { UserProfileSearchBar } from '../components/userProfile/userProfileSearchBar';
 import { UserProfileSidePanel } from '../components/userProfile/userProfileSidePanel';
-import type { userProfileInfoType } from '../components/userProfile/userProfileInfo';
 import { UserProfileHeading } from '../components/userProfile/userProfileHeading';
+import type { UserProfileData } from '../components/userProfile/userProfileInfo';
 import { UserProfileFilter } from '../components/userProfile/userProfileFilter';
 import { UserProfileInfo } from '../components/userProfile/userProfileInfo';
 import { trpc } from '../utils/trpc';
@@ -43,11 +44,12 @@ const UserProfile: NextPage<InferGetServerSidePropsType<typeof getServerSideProp
               name={profileData?.name as string}
               isVerified={profileData?.isVerified as boolean}
             />
-            <UserProfileInfo {...(profileData as userProfileInfoType)} />
+            <UserProfileInfo {...(profileData as UserProfileData)} />
             <UserProfileFilter />
           </section>
           <section className={userProfileStyles.sideWrapper}>
             <UserProfileSearchBar />
+            <UserProfileStickyPanel />
           </section>
         </div>
       </main>

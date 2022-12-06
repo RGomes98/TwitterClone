@@ -1,0 +1,56 @@
+@use '../../variables' as var;
+
+.container {
+  width: 100%;
+  margin-top: 1rem;
+  color: var.$white;
+  border-radius: 1rem;
+}
+
+.heading {
+  display: block;
+  font-weight: 600;
+  font-size: var.$sm-heading;
+  padding: 1rem 0 0.6rem 1rem;
+}
+
+.wrapper {
+  display: flex;
+  transition: 0.2s;
+  color: var.$white;
+  text-decoration: none;
+  flex-direction: column;
+  padding: 0.6rem 1.2rem;
+}
+
+.wrapper:hover,
+.button:hover {
+  background-color: var.$lgt-grey-hover-transparent;
+}
+
+.wrapper .text:first-child,
+.wrapper .text:last-child {
+  color: var.$grey-fnt;
+  font-size: var.$xsm-text;
+}
+
+.wrapper .text:nth-child(2) {
+  color: var.$white;
+}
+
+.button,
+.container {
+  background-color: var.$drk-bluish-black;
+}
+
+.button {
+  width: 100%;
+  border: none;
+  display: flex;
+  cursor: pointer;
+  transition: 0.2s;
+  padding: 1rem 1.1rem;
+  color: var.$lgt-blue;
+  font-size: var.$md-text;
+  border-radius: 0 0 1rem 1rem;
+}
