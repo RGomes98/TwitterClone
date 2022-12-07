@@ -41,7 +41,7 @@
   flex-direction: column;
 }
 
-.wrapper :first-child {
+.wrapper .text:first-child {
   width: 100%;
   display: flex;
   font-weight: 700;
@@ -57,7 +57,7 @@
   filter: var.$white-filter;
 }
 
-.wrapper :last-child {
+.wrapper:nth-child(2) {
   font-weight: 500;
   color: var.$grey-fnt;
   font-size: var.$xsm-text;

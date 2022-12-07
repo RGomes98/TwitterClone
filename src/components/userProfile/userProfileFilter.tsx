@@ -7,15 +7,17 @@ import Image from 'next/image';
 
 import userProfileStyles from '../../stylesheets/components/userProfile/userProfileFilter.module.scss';
 
-export const UserProfileFilter: React.FC = () => {
+export const UserProfileFilter: React.FC<{ hasProfileData: boolean }> = ({ hasProfileData }) => {
   const [selectedFilter, setSelectedFilter] = useState(0);
+
+  const { data: session } = useSession();
 
   const containerRef = useRef<HTMLElement>(null);
 
-  const { data: sessionData } = useSession();
-
   const { isScrollAtStart, isWindowSizeSmallEnough, handleScrollToStart, handleScrollToEnd } =
     useHorizontalScroll(containerRef);
+
+  if (!hasProfileData) return null;
 
   return (
     <section className={userProfileStyles.container} ref={containerRef}>
@@ -71,7 +73,7 @@ export const UserProfileFilter: React.FC = () => {
             ? `${userProfileStyles.filterButton} ${userProfileStyles.selectedFilter}`
             : userProfileStyles.filterButton
         }
-        onClick={() => (sessionData ? setSelectedFilter(2) : null)}
+        onClick={() => (session ? setSelectedFilter(2) : null)}
       >
         Media
         {selectedFilter === 2 && <span className={userProfileStyles.bar}></span>}
@@ -82,7 +84,7 @@ export const UserProfileFilter: React.FC = () => {
             ? `${userProfileStyles.filterButton} ${userProfileStyles.selectedFilter}`
             : userProfileStyles.filterButton
         }
-        onClick={() => (sessionData ? setSelectedFilter(3) : null)}
+        onClick={() => (session ? setSelectedFilter(3) : null)}
       >
         Likes
         {selectedFilter === 3 && <span className={userProfileStyles.bar}></span>}

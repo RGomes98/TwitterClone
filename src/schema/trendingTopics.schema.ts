@@ -21,3 +21,5 @@ export const trendingTopicsOutputSchema = z.array(
     as_of: z.string(),
   })
 );
+
+export type TrendingTopics = z.infer<typeof trendingTopicsOutputSchema>;

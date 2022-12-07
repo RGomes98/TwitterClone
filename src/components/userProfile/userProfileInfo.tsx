@@ -1,3 +1,6 @@
+import type { UserProfileData } from '../../schema/userProfileInfo.schema';
+import { useRouter } from 'next/router';
+
 import verifiedSVG from '../../../public/images/verified.svg';
 import locationSVG from '../../../public/images/location.svg';
 import calendarSVG from '../../../public/images/calendar.svg';
@@ -5,18 +8,6 @@ import balloonSVG from '../../../public/images/balloon.svg';
 import Image from 'next/image';
 
 import userProfileStyles from '../../stylesheets/components/userProfile/userProfileInfo.module.scss';
-
-export type UserProfileData = {
-  backgroundImage: string;
-  isVerified: boolean;
-  residesAt: string;
-  username: string;
-  message: string;
-  createdAt: Date;
-  birthday: Date;
-  image: string;
-  name: string;
-};
 
 export const UserProfileInfo: React.FC<UserProfileData> = ({
   backgroundImage,
@@ -29,6 +20,8 @@ export const UserProfileInfo: React.FC<UserProfileData> = ({
   image,
   name,
 }) => {
+  const { query: notFoundUserParams } = useRouter();
+
   return (
     <section className={userProfileStyles.container}>
       <button className={userProfileStyles.backgroundButton}>
@@ -53,7 +46,7 @@ export const UserProfileInfo: React.FC<UserProfileData> = ({
               />
             )}
           </button>
-          <button className={userProfileStyles.button}>Follow</button>
+          {name && <button className={userProfileStyles.button}>Follow</button>}
         </section>
         <span className={userProfileStyles.name}>
           {name}
@@ -63,43 +56,55 @@ export const UserProfileInfo: React.FC<UserProfileData> = ({
             </button>
           )}
         </span>
-        <span className={userProfileStyles.username}>@{username}</span>
+        <span
+          className={
+            name
+              ? userProfileStyles.username
+              : `${userProfileStyles.notFoundUser} ${userProfileStyles.username}`
+          }
+        >
+          @{name ? username : notFoundUserParams.userProfile}
+        </span>
         <span className={userProfileStyles.message}>{message}</span>
-        <section className={userProfileStyles.profileDetailsWrapper}>
-          <div className={userProfileStyles.detail}>
-            <Image className={userProfileStyles.logo} src={locationSVG} alt='location-logo' />
-            <span className={userProfileStyles.text}>{residesAt}</span>
-          </div>
-          <div className={userProfileStyles.detail}>
-            <Image className={userProfileStyles.logo} src={balloonSVG} alt='balloon-logo' />
-            <span className={userProfileStyles.text}>
-              Born{' '}
-              {birthday?.toLocaleString('en-US', {
-                year: 'numeric',
-                day: 'numeric',
-                month: 'long',
-              })}
+        {name && (
+          <section className={userProfileStyles.profileDetailsWrapper}>
+            <div className={userProfileStyles.detail}>
+              <Image className={userProfileStyles.logo} src={locationSVG} alt='location-logo' />
+              <span className={userProfileStyles.text}>{residesAt}</span>
+            </div>
+            <div className={userProfileStyles.detail}>
+              <Image className={userProfileStyles.logo} src={balloonSVG} alt='balloon-logo' />
+              <span className={userProfileStyles.text}>
+                Born{' '}
+                {birthday?.toLocaleString('en-US', {
+                  year: 'numeric',
+                  day: 'numeric',
+                  month: 'long',
+                })}
+              </span>
+            </div>
+            <div className={userProfileStyles.detail}>
+              <Image className={userProfileStyles.logo} src={calendarSVG} alt='calendar-logo' />
+              <span className={userProfileStyles.text}>
+                Joined{' '}
+                {createdAt?.toLocaleString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                })}
+              </span>
+            </div>
+          </section>
+        )}
+        {name && (
+          <section className={userProfileStyles.profileFollowersWrapper}>
+            <span className={userProfileStyles.wrapper}>
+              number <span className={userProfileStyles.text}>Following</span>
             </span>
-          </div>
-          <div className={userProfileStyles.detail}>
-            <Image className={userProfileStyles.logo} src={calendarSVG} alt='calendar-logo' />
-            <span className={userProfileStyles.text}>
-              Joined{' '}
-              {createdAt?.toLocaleString('en-US', {
-                year: 'numeric',
-                month: 'long',
-              })}
+            <span className={userProfileStyles.wrapper}>
+              number <span className={userProfileStyles.text}>Followers</span>
             </span>
-          </div>
-        </section>
-        <section className={userProfileStyles.profileFollowersWrapper}>
-          <span className={userProfileStyles.wrapper}>
-            number <span className={userProfileStyles.text}>Following</span>
-          </span>
-          <span className={userProfileStyles.wrapper}>
-            number <span className={userProfileStyles.text}>Followers</span>
-          </span>
-        </section>
+          </section>
+        )}
       </div>
     </section>
   );

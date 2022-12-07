@@ -1,11 +1,9 @@
 import { trendingTopicsOutputSchema } from '../../../schema/trendingTopics.schema';
+import type { TrendingTopics } from '../../../schema/trendingTopics.schema';
 import { publicProcedure, router } from '../trpc';
 import { env } from '../../../env/server.mjs';
 import { TRPCError } from '@trpc/server';
-import type { z } from 'zod';
 import axios from 'axios';
-
-type TrendingTopics = z.infer<typeof trendingTopicsOutputSchema>;
 
 export const trendingTopicsRouter = router({
   trendingTopics: publicProcedure.output(trendingTopicsOutputSchema).query(async () => {

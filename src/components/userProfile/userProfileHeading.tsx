@@ -15,12 +15,12 @@ export const UserProfileHeading: React.FC<{ name: string; isVerified: boolean }>
       </button>
       <div className={userProfileStyles.wrapper}>
         <span className={userProfileStyles.text}>
-          {name}
+          {name ? name : 'Profile'}
           {isVerified && (
             <Image className={userProfileStyles.logo} src={verifiedSVG} alt='verified-logo' />
           )}
         </span>
-        <span className={userProfileStyles.text}>ProfileData Tweets</span>
+        {name && <span className={userProfileStyles.text}>ProfileData Tweets</span>}
       </div>
     </section>
   );

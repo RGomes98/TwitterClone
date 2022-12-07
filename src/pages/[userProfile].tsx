@@ -2,10 +2,12 @@ import type { GetServerSidePropsContext, InferGetServerSidePropsType, NextPage }
 import { UserProfileStickyPanel } from '../components/userProfile/userProfileStickyPanel';
 import { UserProfileSearchBar } from '../components/userProfile/userProfileSearchBar';
 import { UserProfileSidePanel } from '../components/userProfile/userProfileSidePanel';
+import { UserProfileNotFound } from '../components/userProfile/userProfileNotFound';
 import { UserProfileHeading } from '../components/userProfile/userProfileHeading';
-import type { UserProfileData } from '../components/userProfile/userProfileInfo';
 import { UserProfileFilter } from '../components/userProfile/userProfileFilter';
+import { LoadingStateLogo } from '../components/loadingState/loadingStateLogo';
 import { UserProfileInfo } from '../components/userProfile/userProfileInfo';
+import type { UserProfileData } from '../schema/userProfileInfo.schema';
 import { trpc } from '../utils/trpc';
 
 import Head from 'next/head';
@@ -25,15 +27,22 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
 const UserProfile: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
   username,
 }) => {
-  const { data: profileData, isLoading } = trpc.usersRouter.userByUsername.useQuery({
-    username: username as string,
-  });
+  const { data: profileData, isLoading } = trpc.usersRouter.userByUsername.useQuery(
+    {
+      username: username as string,
+    },
+    { refetchOnWindowFocus: false }
+  );
+
+  if (isLoading) return <LoadingStateLogo />;
 
   return (
     <>
       <Head>
         <title>
-          {profileData ? `${profileData?.name} (@${profileData?.username}) / Twitter` : 'Twitter'}
+          {profileData
+            ? `${profileData?.name} (@${profileData?.username}) / Twitter`
+            : 'Profile / Twitter'}
         </title>
       </Head>
       <main className={userProfileStyles.container}>
@@ -45,7 +54,8 @@ const UserProfile: NextPage<InferGetServerSidePropsType<typeof getServerSideProp
               isVerified={profileData?.isVerified as boolean}
             />
             <UserProfileInfo {...(profileData as UserProfileData)} />
-            <UserProfileFilter />
+            <UserProfileFilter hasProfileData={profileData ? true : false} />
+            {!profileData && <UserProfileNotFound />}
           </section>
           <section className={userProfileStyles.sideWrapper}>
             <UserProfileSearchBar />

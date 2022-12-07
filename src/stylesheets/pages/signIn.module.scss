@@ -96,13 +96,10 @@
   background-color: var.$lgt-grey-hover-transparent;
 }
 
-@media (max-width: 615px) {
-  .mainHeading {
-    font-size: var.$bg-heading-media;
-  }
-
-  .minorHeading {
-    font-size: var.$md-heading-media;
+@media (max-width: 1200px) {
+  .logoBig {
+    width: 100%;
+    min-width: unset;
   }
 }
 
@@ -132,9 +129,12 @@
   }
 }
 
-@media (max-width: 1200px) {
-  .logoBig {
-    width: 100%;
-    min-width: unset;
+@media (max-width: 615px) {
+  .mainHeading {
+    font-size: var.$bg-heading-media;
+  }
+
+  .minorHeading {
+    font-size: var.$md-heading-media;
   }
 }

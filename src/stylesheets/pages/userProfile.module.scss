@@ -10,8 +10,9 @@
 
 .wrapper {
   gap: 1.7rem;
-  width: auto;
+  width: 100%;
   display: flex;
+  max-width: 61rem;
   margin-right: 2rem;
 }
 
@@ -54,6 +55,7 @@
   }
 
   .wrapper {
+    max-width: 37.5rem;
     margin-right: unset;
   }
 }
