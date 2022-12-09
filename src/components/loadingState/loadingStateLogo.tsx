@@ -5,8 +5,8 @@ import loadingStateStyles from '../../stylesheets/components/loadingState/loadin
 
 export const LoadingStateLogo: React.FC = () => {
   return (
-    <div className={loadingStateStyles.container}>
+    <section className={loadingStateStyles.container}>
       <Image className={loadingStateStyles.logo} src={twitterSVG} alt='twitter-logo' />
-    </div>
+    </section>
   );
 };

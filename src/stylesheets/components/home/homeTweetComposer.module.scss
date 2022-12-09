@@ -1,0 +1,129 @@
+@use '../../variables' as var;
+
+.container {
+  width: 100%;
+  padding: 0 1.2rem;
+  background-color: transparent;
+  border-bottom: 1px solid var.$white-transparent;
+}
+
+.headingWrapper {
+  width: 100%;
+  display: flex;
+  position: relative;
+  align-items: center;
+  padding: 0.5rem 0 1.2rem;
+  justify-content: space-between;
+}
+
+.heading {
+  font-weight: 600;
+  color: var.$white;
+  font-size: var.$sm-heading;
+}
+
+.button {
+  border: none;
+  display: flex;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+}
+
+.headingWrapper .button {
+  top: 0.5rem;
+  right: -0.5rem;
+  position: absolute;
+}
+
+.headingWrapper .button:hover {
+  background-color: var.$lgt-grey-hover-transparent;
+}
+
+.logo {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.headingWrapper .logo {
+  filter: var.$white-filter;
+}
+
+.wrapper {
+  width: 100%;
+  display: flex;
+}
+
+.profilePicture {
+  border-radius: 50%;
+  margin-right: 0.6rem;
+}
+
+.tweetWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  width: 97%;
+  resize: none;
+  border: none;
+  outline: none;
+  margin-top: 0.8rem;
+  overflow-y: hidden;
+  margin-left: 0.4rem;
+  color: var.$greyish-white;
+  font-size: var.$sm-heading;
+  background-color: transparent;
+  transition: padding-bottom 0.2s;
+}
+
+.inputBorder {
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid var.$white-transparent;
+}
+
+.input::-webkit-input-placeholder {
+  color: var.$grey-fnt;
+}
+
+.buttonWrapper {
+  display: flex;
+  padding: 0.6rem 0 0.8rem;
+}
+
+.buttonWrapper .button:hover {
+  background-color: var.$blue-hover-transparent;
+}
+
+.buttonWrapper .button:last-child {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.buttonWrapper .logo {
+  width: 1.3rem;
+  height: 1.3rem;
+  filter: var.$blue-filter;
+}
+
+.counterWrapper {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  gap: 1rem;
+}
+
+.tweetButton {
+  background-color: var.$lgt-blue;
+  color: var.$white;
+  font-weight: 600;
+  font-size: var.$sm-text;
+  margin-left: auto;
+  border-radius: 2rem;
+  padding: 0.6rem 1.2rem;
+}

@@ -1,4 +1,5 @@
 import type { UserProfileData } from '../../schema/userProfileInfo.schema';
+import { filterAtSign } from '../../utils/helper/filterAtSign';
 import { useRouter } from 'next/router';
 
 import verifiedSVG from '../../../public/images/verified.svg';
@@ -63,7 +64,7 @@ export const UserProfileInfo: React.FC<UserProfileData> = ({
               : `${userProfileStyles.notFoundUser} ${userProfileStyles.username}`
           }
         >
-          @{name ? username : notFoundUserParams.userProfile}
+          @{name ? filterAtSign(username) : filterAtSign(notFoundUserParams.userProfile as string)}
         </span>
         <span className={userProfileStyles.message}>{message}</span>
         {name && (

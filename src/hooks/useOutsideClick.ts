@@ -1,6 +1,6 @@
 import { type RefObject, useState, useEffect, useCallback } from 'react';
 
-type RefType = HTMLDivElement | HTMLInputElement;
+type RefType = HTMLDivElement | HTMLInputElement | HTMLTextAreaElement;
 
 export const useOutsideClick = (ref: RefObject<RefType>) => {
   const [isOutside, setIsOutside] = useState(true);

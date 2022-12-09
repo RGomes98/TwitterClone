@@ -28,10 +28,12 @@ export const usersRouter = router({
     }),
 
   userByUsername: publicProcedure
-    .input(z.object({ username: z.string() }))
+    .input(z.object({ username: z.string().optional() }))
     .query(async ({ input, ctx }) => {
       const { username } = input;
       const { prisma } = ctx;
+
+      if (!username) return;
 
       try {
         const user = await prisma.user.findUniqueOrThrow({

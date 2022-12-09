@@ -1,6 +1,7 @@
 //Colors
 $black: hsl(0, 0%, 0%);
 $white: hsl(0, 0%, 100%);
+$red: hsl(356, 91%, 54%);
 $blue: hsl(204, 88%, 45%);
 $drk-grey: hsl(214, 10%, 14%);
 $lgt-blue: hsl(204, 88%, 53%);
@@ -44,3 +45,5 @@ $grey-filter: brightness(0) saturate(100%) invert(49%) sepia(4%) saturate(496%) 
   brightness(91%) contrast(86%);
 $white-filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(248deg)
   brightness(106%) contrast(106%);
+$blue-filter: brightness(0) saturate(100%) invert(30%) sepia(97%) saturate(2009%) hue-rotate(185deg)
+  brightness(100%) contrast(89%);

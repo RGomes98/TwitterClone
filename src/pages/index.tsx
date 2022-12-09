@@ -21,7 +21,7 @@ const SignIn: NextPage = () => {
 
   useEffect(() => {
     if (sessionStatus !== 'loading' && session) push('/home');
-  }, [session, sessionStatus, push]);
+  }, [push, session, sessionStatus]);
 
   if (sessionStatus === 'loading') return <LoadingStateLogo />;
 

@@ -13,9 +13,9 @@ export const UserProfileTrendingTopics = () => {
       <span className={userProfileStyles.heading}>What’s happening</span>
       {trendingTopicsData?.[0]?.trends
         .slice(0, TRENDS_AMOUNT)
-        .map(({ url, name, query, tweet_volume }) => {
+        .map(({ url, name, tweet_volume }, idx) => {
           return (
-            <a className={userProfileStyles.wrapper} href={url} key={query}>
+            <a className={userProfileStyles.wrapper} href={url} key={idx}>
               <span className={userProfileStyles.text}>Trending in USA</span>
               <span className={userProfileStyles.text}>{name}</span>
               <span className={userProfileStyles.text}>
