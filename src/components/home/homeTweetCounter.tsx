@@ -25,7 +25,7 @@ export const HomeTweetCounter: React.FC<{ tweetLength: number }> = ({ tweetLengt
     return BLUE;
   };
 
-  return tweetLength ? (
+  return (
     <div className={homeStyles.container}>
       <svg
         className={
@@ -62,5 +62,5 @@ export const HomeTweetCounter: React.FC<{ tweetLength: number }> = ({ tweetLengt
         </span>
       )}
     </div>
-  ) : null;
+  );
 };

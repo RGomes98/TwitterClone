@@ -25,8 +25,9 @@
 .button {
   border: none;
   display: flex;
+  width: 2.2rem;
+  height: 2.2rem;
   cursor: pointer;
-  padding: 0.5rem;
   border-radius: 50%;
   align-items: center;
   justify-content: center;
@@ -93,6 +94,7 @@
 
 .buttonWrapper {
   display: flex;
+  align-items: center;
   padding: 0.6rem 0 0.8rem;
 }
 
@@ -100,7 +102,7 @@
   background-color: var.$blue-hover-transparent;
 }
 
-.buttonWrapper .button:last-child {
+.buttonWrapper .button:nth-child(6) {
   opacity: 0.6;
   pointer-events: none;
 }
@@ -112,18 +114,74 @@
 }
 
 .counterWrapper {
+  gap: 1rem;
+  display: flex;
+  min-width: 11rem;
+  margin-left: auto;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.counterDetails {
   display: flex;
   align-items: center;
-  margin-left: auto;
-  gap: 1rem;
+  justify-content: center;
+}
+
+.counterBar {
+  width: 1px;
+  height: 2.2rem;
+  margin: 0 0.8rem;
+  background-color: var.$white-transparent;
+}
+
+.addButton {
+  display: flex;
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: 1px solid var.$grey-border;
+}
+
+.addButton:hover {
+  background-color: var.$blue-hover-transparent;
+}
+
+.counterWrapper .logo {
+  width: 1rem;
+  height: 1rem;
 }
 
 .tweetButton {
-  background-color: var.$lgt-blue;
-  color: var.$white;
   font-weight: 600;
-  font-size: var.$sm-text;
-  margin-left: auto;
+  color: var.$white;
   border-radius: 2rem;
   padding: 0.6rem 1.2rem;
+  font-size: var.$sm-text;
+  background-color: var.$lgt-blue;
+}
+
+@media (max-width: '720px') {
+  .tweetWrapper .button:nth-child(3),
+  .tweetWrapper .button:nth-child(5) {
+    display: none;
+  }
+}
+
+@media (max-width: '500px') {
+  .buttonWrapper {
+    gap: 0.6rem 0;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: '400px') {
+  .counterWrapper {
+    margin-left: unset;
+    justify-content: flex-start;
+  }
 }

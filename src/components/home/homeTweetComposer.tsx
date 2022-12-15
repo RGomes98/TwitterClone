@@ -11,6 +11,7 @@ import starsSVG from '../../../public/images/stars.svg';
 import mediaSVG from '../../../public/images/media.svg';
 import pollSVG from '../../../public/images/poll.svg';
 import gifSVG from '../../../public/images/gif.svg';
+import addSVG from '../../../public/images/add.svg';
 import Image from 'next/image';
 
 import homeStyles from '../../stylesheets/components/home/homeTweetComposer.module.scss';
@@ -75,8 +76,15 @@ export const HomeTweetComposer: React.FC = () => {
               <Image className={homeStyles.logo} src={locationSVG} alt='location-logo' />
             </button>
             <div className={homeStyles.counterWrapper}>
-              <HomeTweetCounter tweetLength={tweetValue?.length} />
-              <span></span>
+              {!!tweetValue?.length && (
+                <div className={homeStyles.counterDetails}>
+                  <HomeTweetCounter tweetLength={tweetValue?.length} />
+                  <span className={homeStyles.counterBar}></span>
+                  <button className={homeStyles.addButton}>
+                    <Image className={homeStyles.logo} src={addSVG} alt='add-logo' />
+                  </button>
+                </div>
+              )}
               <button className={homeStyles.tweetButton}>Tweet</button>
             </div>
           </section>
