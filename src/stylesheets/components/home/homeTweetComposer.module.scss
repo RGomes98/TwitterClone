@@ -2,7 +2,8 @@
 
 .container {
   width: 100%;
-  padding: 0 1.2rem;
+  display: flex;
+  flex-direction: column;
   background-color: transparent;
   border-bottom: 1px solid var.$white-transparent;
 }
@@ -12,7 +13,7 @@
   display: flex;
   position: relative;
   align-items: center;
-  padding: 0.5rem 0 1.2rem;
+  padding: 0.5rem 1.2rem 1.2rem;
   justify-content: space-between;
 }
 
@@ -36,7 +37,7 @@
 
 .headingWrapper .button {
   top: 0.5rem;
-  right: -0.5rem;
+  right: 0.5rem;
   position: absolute;
 }
 
@@ -53,9 +54,34 @@
   filter: var.$white-filter;
 }
 
+.loadingBarWrapper {
+  width: 100%;
+  position: relative;
+  padding: 0 0 0.6rem 0;
+}
+
+.loadingBar {
+  position: absolute;
+  height: 0.2rem;
+  border-radius: 1rem;
+  margin-bottom: 0.4rem;
+  background-color: var.$lgt-blue;
+  animation: createTweetLoading 0.8s forwards;
+}
+
+@keyframes createTweetLoading {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
 .wrapper {
   width: 100%;
   display: flex;
+  padding: 0 1.2rem;
 }
 
 .profilePicture {
@@ -77,10 +103,16 @@
   margin-top: 0.8rem;
   overflow-y: hidden;
   margin-left: 0.4rem;
+  margin-bottom: 0.4rem;
+  border-radius: 0.2rem;
   color: var.$greyish-white;
   font-size: var.$sm-heading;
   background-color: transparent;
-  transition: padding-bottom 0.2s;
+  transition: padding-bottom 0.2s, background-color 0.2s;
+}
+
+.inputDisabled {
+  background-color: var.$red-transparent;
 }
 
 .inputBorder {
@@ -92,34 +124,37 @@
   color: var.$grey-fnt;
 }
 
-.buttonWrapper {
+.buttonSection {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   padding: 0.6rem 0 0.8rem;
+  justify-content: space-between;
 }
 
-.buttonWrapper .button:hover {
+.buttonSection .button:hover {
   background-color: var.$blue-hover-transparent;
 }
 
-.buttonWrapper .button:nth-child(6) {
+.buttonSection .button:nth-child(6) {
   opacity: 0.6;
   pointer-events: none;
 }
 
-.buttonWrapper .logo {
+.buttonSection .logo {
   width: 1.3rem;
   height: 1.3rem;
   filter: var.$blue-filter;
 }
 
+.buttonWrapper {
+  display: flex;
+}
+
 .counterWrapper {
   gap: 1rem;
   display: flex;
-  min-width: 11rem;
-  margin-left: auto;
   align-items: center;
-  justify-content: flex-end;
 }
 
 .counterDetails {
@@ -165,10 +200,19 @@
   background-color: var.$lgt-blue;
 }
 
+.tweetButtonDisabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 @media (max-width: '720px') {
   .tweetWrapper .button:nth-child(3),
   .tweetWrapper .button:nth-child(5) {
     display: none;
+  }
+
+  .inputScroll {
+    overflow-y: scroll;
   }
 }
 

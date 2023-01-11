@@ -3,6 +3,7 @@ import { useOutsideClick } from '../../hooks/useOutsideClick';
 import { HomeTweetCounter } from './homeTweetCounter';
 import { useSession } from 'next-auth/react';
 import { useRef, useState } from 'react';
+import { trpc } from '../../utils/trpc';
 
 import scheduleSVG from '../../../public/images/schedule.svg';
 import locationSVG from '../../../public/images/location.svg';
@@ -27,6 +28,21 @@ export const HomeTweetComposer: React.FC = () => {
 
   useTextAreaResizer(textAreaRef);
 
+  const TWEET_LENGTH_LIMIT = tweetValue.length >= 280;
+
+  const { mutate, isLoading } = trpc.tweetRouter.createTweet.useMutation();
+
+  const handleCreateTweet = () => {
+    mutate(
+      { textContent: tweetValue },
+      {
+        onSuccess: () => {
+          setTweetValue('');
+        },
+      }
+    );
+  };
+
   return (
     <section className={homeStyles.container}>
       <div className={homeStyles.headingWrapper}>
@@ -34,6 +50,9 @@ export const HomeTweetComposer: React.FC = () => {
         <button className={homeStyles.button}>
           <Image className={homeStyles.logo} src={starsSVG} alt='stars-logo' />
         </button>
+      </div>
+      <div className={homeStyles.loadingBarWrapper}>
+        {isLoading && <span className={homeStyles.loadingBar}></span>}
       </div>
       <div className={homeStyles.wrapper}>
         {session && (
@@ -47,34 +66,38 @@ export const HomeTweetComposer: React.FC = () => {
         )}
         <section className={homeStyles.tweetWrapper}>
           <textarea
-            className={
-              isOutside ? homeStyles.input : `${homeStyles.input} ${homeStyles.inputBorder}`
-            }
+            className={`
+            ${tweetValue.length && homeStyles.inputScroll}
+            ${TWEET_LENGTH_LIMIT && homeStyles.inputDisabled}
+            ${isOutside ? homeStyles.input : `${homeStyles.input} ${homeStyles.inputBorder}`}
+            `}
             onChange={(e) => setTweetValue(e.target.value)}
             placeholder='What’s happening?'
             value={tweetValue}
             ref={textAreaRef}
             rows={1}
           ></textarea>
-          <section className={homeStyles.buttonWrapper}>
-            <button className={homeStyles.button}>
-              <Image className={homeStyles.logo} src={mediaSVG} alt='media-logo' />
-            </button>
-            <button className={homeStyles.button}>
-              <Image className={homeStyles.logo} src={gifSVG} alt='gif-logo' />
-            </button>
-            <button className={homeStyles.button}>
-              <Image className={homeStyles.logo} src={pollSVG} alt='poll-logo' />
-            </button>
-            <button className={homeStyles.button}>
-              <Image className={homeStyles.logo} src={emojiSVG} alt='emoji-logo' />
-            </button>
-            <button className={homeStyles.button}>
-              <Image className={homeStyles.logo} src={scheduleSVG} alt='schedule-logo' />
-            </button>
-            <button className={homeStyles.button}>
-              <Image className={homeStyles.logo} src={locationSVG} alt='location-logo' />
-            </button>
+          <section className={homeStyles.buttonSection}>
+            <div className={homeStyles.buttonWrapper}>
+              <button className={homeStyles.button}>
+                <Image className={homeStyles.logo} src={mediaSVG} alt='media-logo' />
+              </button>
+              <button className={homeStyles.button}>
+                <Image className={homeStyles.logo} src={gifSVG} alt='gif-logo' />
+              </button>
+              <button className={homeStyles.button}>
+                <Image className={homeStyles.logo} src={pollSVG} alt='poll-logo' />
+              </button>
+              <button className={homeStyles.button}>
+                <Image className={homeStyles.logo} src={emojiSVG} alt='emoji-logo' />
+              </button>
+              <button className={homeStyles.button}>
+                <Image className={homeStyles.logo} src={scheduleSVG} alt='schedule-logo' />
+              </button>
+              <button className={homeStyles.button}>
+                <Image className={homeStyles.logo} src={locationSVG} alt='location-logo' />
+              </button>
+            </div>
             <div className={homeStyles.counterWrapper}>
               {!!tweetValue?.length && (
                 <div className={homeStyles.counterDetails}>
@@ -85,7 +108,16 @@ export const HomeTweetComposer: React.FC = () => {
                   </button>
                 </div>
               )}
-              <button className={homeStyles.tweetButton}>Tweet</button>
+              <button
+                onClick={handleCreateTweet}
+                className={
+                  !tweetValue.length || TWEET_LENGTH_LIMIT
+                    ? `${homeStyles.tweetButton} ${homeStyles.tweetButtonDisabled}`
+                    : homeStyles.tweetButton
+                }
+              >
+                Tweet
+              </button>
             </div>
           </section>
         </section>

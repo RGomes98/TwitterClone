@@ -2,7 +2,7 @@ import { UserProfileFeedWrapper } from '../components/userProfile/userProfileFee
 import { UserProfileStickyPanel } from '../components/userProfile/userProfileStickyPanel';
 import { UserProfileSearchBar } from '../components/userProfile/userProfileSearchBar';
 import { UserProfileSidePanel } from '../components/userProfile/userProfileSidePanel';
-import { HomeTweetComposer } from '../components/home/homeTweetComposer';
+import { HomeUserFeedWrapper } from '../components/home/homeUserFeedWrapper';
 import { useRouter } from 'next/router';
 import type { NextPage } from 'next';
 
@@ -12,7 +12,7 @@ const UserProfile: NextPage = () => {
   const { asPath } = useRouter();
 
   const dynamicPageComponents: { [index: string]: JSX.Element } = {
-    '/home': <HomeTweetComposer />,
+    '/home': <HomeUserFeedWrapper />,
   };
 
   return (

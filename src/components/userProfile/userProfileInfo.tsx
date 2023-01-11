@@ -1,4 +1,3 @@
-import type { UserProfileData } from '../../schema/userProfileInfo.schema';
 import { filterAtSign } from '../../utils/helper/filterAtSign';
 import { useRouter } from 'next/router';
 
@@ -9,6 +8,18 @@ import balloonSVG from '../../../public/images/balloon.svg';
 import Image from 'next/image';
 
 import userProfileStyles from '../../stylesheets/components/userProfile/userProfileInfo.module.scss';
+
+export type UserProfileData = {
+  backgroundImage: string;
+  isVerified: boolean;
+  residesAt: string;
+  username: string;
+  message: string;
+  createdAt: Date;
+  birthday: Date;
+  image: string;
+  name: string;
+};
 
 export const UserProfileInfo: React.FC<UserProfileData> = ({
   backgroundImage,
@@ -47,7 +58,7 @@ export const UserProfileInfo: React.FC<UserProfileData> = ({
               />
             )}
           </button>
-          {name && <button className={userProfileStyles.button}>Follow</button>}
+          {username && <button className={userProfileStyles.button}>Follow</button>}
         </section>
         <span className={userProfileStyles.name}>
           {name}
@@ -59,15 +70,18 @@ export const UserProfileInfo: React.FC<UserProfileData> = ({
         </span>
         <span
           className={
-            name
+            username
               ? userProfileStyles.username
               : `${userProfileStyles.notFoundUser} ${userProfileStyles.username}`
           }
         >
-          @{name ? filterAtSign(username) : filterAtSign(notFoundUserParams.userProfile as string)}
+          @
+          {username
+            ? filterAtSign(username)
+            : filterAtSign(notFoundUserParams.userProfile as string)}
         </span>
         <span className={userProfileStyles.message}>{message}</span>
-        {name && (
+        {username && (
           <section className={userProfileStyles.profileDetailsWrapper}>
             <div className={userProfileStyles.detail}>
               <Image className={userProfileStyles.logo} src={locationSVG} alt='location-logo' />
@@ -96,7 +110,7 @@ export const UserProfileInfo: React.FC<UserProfileData> = ({
             </div>
           </section>
         )}
-        {name && (
+        {username && (
           <section className={userProfileStyles.profileFollowersWrapper}>
             <span className={userProfileStyles.wrapper}>
               number <span className={userProfileStyles.text}>Following</span>

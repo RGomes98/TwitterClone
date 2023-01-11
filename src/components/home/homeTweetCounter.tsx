@@ -29,7 +29,7 @@ export const HomeTweetCounter: React.FC<{ tweetLength: number }> = ({ tweetLengt
     <div className={homeStyles.container}>
       <svg
         className={
-          TWENTY_REMAINING ? `${homeStyles.logo} ${homeStyles.logoResize}` : `${homeStyles.logo}`
+          TWENTY_REMAINING ? `${homeStyles.logo} ${homeStyles.logoResize}` : homeStyles.logo
         }
         viewBox={`0 0 ${VIEW_BOX_RESIZE}`}
       >
@@ -55,7 +55,7 @@ export const HomeTweetCounter: React.FC<{ tweetLength: number }> = ({ tweetLengt
       {TWENTY_REMAINING && (
         <span
           className={
-            TWEET_LENGTH_LIMIT ? `${homeStyles.text} ${homeStyles.textLimit}` : `${homeStyles.text}`
+            TWEET_LENGTH_LIMIT ? `${homeStyles.text} ${homeStyles.textLimit}` : homeStyles.text
           }
         >
           {280 - tweetLength}

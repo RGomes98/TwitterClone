@@ -1,7 +1,7 @@
-import type { UserProfileData } from '../../schema/userProfileInfo.schema';
 import { LoadingStateSpinner } from '../loadingState/loadingStateSpinner';
 import { UserProfileNotFound } from './userProfileNotFound';
 import { UserProfileHeading } from './userProfileHeading';
+import type { UserProfileData } from './userProfileInfo';
 import { UserProfileFilter } from './userProfileFilter';
 import { UserProfileInfo } from './userProfileInfo';
 import { trpc } from '../../utils/trpc';
